@@ -8,13 +8,14 @@ export const globalErrorHandle = (err: any, req: Request, res: Response, next: N
 
     let statusCode = 500;
     let message = "Something went wrong!";
-    let errorStore : IErrorSourse[] = []
+    let errorStore: IErrorSourse[] = []
 
+    // Zod Error handle
     if (err instanceof ZodError) {
-        err.issues.forEach((issue) =>{
+        err.issues.forEach((issue) => {
             errorStore.push({
-                path : issue.path[issue.path.length -1] as string,
-                message : issue.message
+                path: issue.path[issue.path.length - 1] as string,
+                message: issue.message
             })
         });
 
@@ -22,6 +23,13 @@ export const globalErrorHandle = (err: any, req: Request, res: Response, next: N
         message = "Zod Validation Error"
 
     }
+    // ------- Mongoose duplicate Error
+    else if (err.code === 11000) {
+        const duplicate = err.message.match(/"([^"]*)"/);
+        message = `${duplicate[1]} already exist!`;
+        statusCode = 400;
+    }
+    // Custom App Error handle
     else if (err instanceof AppError) {
         statusCode = err.statusCode;
         message = err.message;

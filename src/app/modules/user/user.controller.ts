@@ -26,7 +26,7 @@ const logInUser = catchAsync(async (req: Request, res: Response, next: NextFunct
 
     const result = await userServices.logInUser(req.body);
 
-    res.cookie("accessToken" , result.token , {httpOnly : true , secure : false})
+    res.cookie("accessToken", result.token, { httpOnly: true, secure: false })
 
     sendResponse(res, {
         statusCode: 201,
@@ -34,9 +34,25 @@ const logInUser = catchAsync(async (req: Request, res: Response, next: NextFunct
         message: "Login successfully.",
         data: result.user
     })
+});
+
+
+const getAllUser = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
+    const query = req.query;
+    const result = await userServices.getAllUser(query as Record<string, string>);
+
+    sendResponse(res , {
+        statusCode : 200,
+        success : true,
+        message : "All user retrived successfully.",
+        data : result.data,
+        meta : result.meta
+    })
+
 })
 
 export const userController = {
     createUser,
-    logInUser
+    logInUser,
+    getAllUser
 }

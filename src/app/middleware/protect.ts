@@ -4,7 +4,7 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { envVars } from "../config/env";
 import { User } from "../modules/user/user.model";
 
-export const protext = (...auth: string[]) => async (req: Request, res: Response, next: NextFunction) => {
+export const protect = (...auth: string[]) => async (req: Request, res: Response, next: NextFunction) => {
     const token = req.cookies.accessToken;
 
     if (!token) {
@@ -28,7 +28,7 @@ export const protext = (...auth: string[]) => async (req: Request, res: Response
     };
 
     if (auth.length && !auth.includes(decodedToken.role)) {
-        throw new AppError(400, "ou are not parmited access this route")
+        throw new AppError(400, "You are not parmited access this route")
     }
 
     req.authUser = decodedToken
