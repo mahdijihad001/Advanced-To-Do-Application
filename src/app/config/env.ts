@@ -3,13 +3,15 @@ dotEnv.config();
 
 interface envType{
     PORT : string,
-    DEV_ENVIRONMENT : string
+    DEV_ENVIRONMENT : string,
+    MONGO_URI : string,
+    ACCESS_SECRATE : string
 };
 
 
 const loadEnvironmentVariables = () : envType =>{
 
-    const requiredEnvironment : string[] = ["PORT" , "DEV_ENVIRONMENT"];
+    const requiredEnvironment : string[] = ["PORT" , "DEV_ENVIRONMENT" , "MONGO_URI" , "ACCESS_SECRATE"];
 
     requiredEnvironment.forEach((key) =>{
         if(!process.env[key]){
@@ -19,7 +21,9 @@ const loadEnvironmentVariables = () : envType =>{
 
     return {
         PORT : process.env.PORT as string,
-        DEV_ENVIRONMENT : process.env.DEV_ENVIRONMENT as string
+        DEV_ENVIRONMENT : process.env.DEV_ENVIRONMENT as string,
+        MONGO_URI : process.env.MONGO_URI as string,
+        ACCESS_SECRATE : process.env.ACCESS_SECRATE as string
     }
 };
 

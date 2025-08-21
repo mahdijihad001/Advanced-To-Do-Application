@@ -16,7 +16,11 @@ export const globalErrorHandle = (err: any, req: Request, res: Response, next: N
                 path : issue.path[issue.path.length -1] as string,
                 message : issue.message
             })
-        })
+        });
+
+        statusCode = 400;
+        message = "Zod Validation Error"
+
     }
     else if (err instanceof AppError) {
         statusCode = err.statusCode;
