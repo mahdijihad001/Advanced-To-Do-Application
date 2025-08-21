@@ -34,7 +34,7 @@ const logInUser = async(payload : Partial<IUser>) =>{
 
     const {password , ...user} = findUser.toObject();
 
-    const token = await generateToken(findUser , envVars.ACCESS_SECRATE)
+    const token = await generateToken(findUser , envVars.ACCESS_SECRET)
    
     return {
         user , token
