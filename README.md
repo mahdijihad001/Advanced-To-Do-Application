@@ -21,8 +21,9 @@ ADMIN_PASS=Admin@121
 
 
 # Start Server
+```
 npm run dev
-
+```
 
 
 ## API Endpoints with Request & Response
@@ -108,6 +109,7 @@ GET /tasks/:id
 ```
 
 Response (res)
+```
 
 {
     "success": true,
@@ -129,6 +131,7 @@ Response (res)
         "updatedAt": "2025-08-22T08:11:31.283Z"
     }
 }
+```
 ## Update Task
 
 Request (req)
