@@ -1,0 +1,1 @@
+{"version":3,"file":"globalType.d.ts","sourceRoot":"","sources":["../../../src/app/config/globalType.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,UAAU,EAAE,MAAM,cAAc,CAAC;AAE1C,OAAO,CAAC,MAAM,CAAA;IACV,UAAU,OAAO,CAAA;QACb,UAAU,OAAO;YACb,QAAQ,EAAG,UAAU,CAAA;SACxB;KACJ;CACJ"}

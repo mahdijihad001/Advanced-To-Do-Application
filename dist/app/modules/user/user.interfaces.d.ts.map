@@ -1,0 +1,1 @@
+{"version":3,"file":"user.interfaces.d.ts","sourceRoot":"","sources":["../../../../src/app/modules/user/user.interfaces.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,KAAK;IAClB,GAAI,CAAC,EAAE,MAAM,CAAC;IACd,KAAK,EAAG,MAAM,CAAC;IACf,QAAQ,EAAG,MAAM,CAAC;IAClB,IAAK,CAAC,EAAE,MAAM,CAAA;CACjB"}
