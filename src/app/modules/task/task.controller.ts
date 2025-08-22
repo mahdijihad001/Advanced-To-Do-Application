@@ -40,12 +40,13 @@ const getSingleTodo = catchAsync(async (req: Request, res: Response, next: NextF
 
 const updateTask = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
+    const userId = req.authUser.userId
     if (!id) {
         throw new AppError(400, "Task is not found");
     }
     const payload = req.body;
 
-    const result = await taskServices.updateTask(id, payload);
+    const result = await taskServices.updateTask(id, payload, userId);
 
     sendResponse(res, {
         statusCode: 200,
@@ -59,12 +60,13 @@ const updateTask = catchAsync(async (req: Request, res: Response, next: NextFunc
 
 const softDeleteTask = catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const { id } = req.params;
+     const userId = req.authUser.userId
 
     if (!id) {
         throw new AppError(400, "Task id not found.");
     }
 
-    const result = await taskServices.softDeleteTask(id);
+    const result = await taskServices.softDeleteTask(id , userId);
 
     sendResponse(res, {
         statusCode: 200,
@@ -88,7 +90,10 @@ const getOwnTask = catchAsync(async (req: Request, res: Response, next: NextFunc
         meta: result.meta
     })
 
-})
+});
+
+
+
 
 export const taskController = {
     createTask,
