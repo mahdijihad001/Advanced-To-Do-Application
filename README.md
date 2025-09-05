@@ -195,6 +195,11 @@ Response (res)
 }
 ```
 
+## Postman Documentation 
 
+```
+https://documenter.getpostman.com/view/35157512/2sB3BLinVr
+
+```
 
 
